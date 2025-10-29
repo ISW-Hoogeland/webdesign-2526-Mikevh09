@@ -1,24 +1,125 @@
-body {
-background-color: #FFFFFF;
-color: #;
-font-family: ;
-margin: ;
-line-height: ;
+
+:root {
+	--bg: #e1d60a;
+	--primary: #000011;
+	--accent: #08a415;
+	--muted: #000011;
+	--surface: #08a415;
+	--font-sans: "Segoe UI", Roboto, Arial, sans-serif;
+	--gap: 20px;
 }
 
+/* Basisreset en grid-layout */
+html, body {
+	height: 86%;
+	margin: -8px;
+	font-family: var(--font-sans);
+	background-color: var(--bg);
+	color: var(--primary);
+}
+
+/* Grid: header boven, nav links, main rechts, footer onder */
+body {
+	display: grid;
+	grid-template-columns: 240px 1fr;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"header header"
+		"nav main"
+		"footer footer";
+	gap: var(--gap);
+	padding: var(--gap);
+	box-sizing: border-box;
+}
+
+/* Header */
+header {
+	grid-area: header;
+	background: linear-gradient(90deg, var(--accent), #e1d60a);
+	color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+}
+
+/* Navigatie */
+nav {
+	grid-area: nav;
+	background: var(--surface);
+	padding: 18px;
+	border-radius: 8px;
+	box-shadow: 0 1px 3px rgba(209, 5, 0, 0.04);
+}
+
+nav ul {
+	list-style: ;
+	padding: 0;
+	margin: ;
+}
+
+nav li + li {
+	margin-top: 10px;
+}
+
+nav a {
+	display: block;
+	padding: 8px 12px;
+	color: var(--primary);
+	text-decoration: none;
+	border-radius: 6px;
+	transition: background 0.15s, color 0.15s;
+}
+
+nav a:hover,
+nav a:focus {
+	background: var(--accent);
+	color: #FFFFFF;
+}
+
+/* Main inhoud */
+main {
+	grid-area: main;
+	background: #08a415;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+}
+
+/* Footer */
+footer {
+	grid-area: footer;
+	padding: 12px 20px;
+	text-align: center;
+	color: var(--muted);
+}
+
+/* Koppen */
 h1 {
-background-color: ;
-color: ;
-padding: ;
-border-radius: ;
-text-align: ;
-font-size: ;
+	margin: 0;
+	font-size: 1.6rem;
 }
 
 h2 {
-color: ;
-font-size: ;
-border-bottom: ;
-padding-bottom: ;
-margin-top: ;
+	color: var(--primary);
+	font-size: 1.2rem;
+	border-bottom: 2px solid #e1d60a;
+	padding-bottom: 10px;
+	margin-top: ;
+}
+
+/* Responsive: stapel op kleine schermen */
+@media (max-width: 500px) {
+	body {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"header"
+			"nav"
+			"main"
+			"footer";
+		padding: 12px;
+	}
+	nav {
+		order: 1;
+	}
 }
